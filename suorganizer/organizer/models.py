@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 
@@ -14,6 +15,9 @@ class Tag(models.Model):
 	
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('organizer_tag_detail', kwargs={'slug': self.slug})
 
 	class Meta:
 		ordering = ['name']
@@ -29,6 +33,9 @@ class Startup(models.Model):
 	
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('organizer_startup_detail', kwargs={'slug': self.slug})
 
 	class Meta:
 		ordering = ['name']
